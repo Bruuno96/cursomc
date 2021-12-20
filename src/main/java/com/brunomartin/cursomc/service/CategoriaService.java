@@ -18,4 +18,8 @@ public class CategoriaService {
 	public Categoria buscar(Integer id) {
 		return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No object with this ID"));
 	}
+	
+	public Categoria create(Categoria c) {
+		return repository.save(c);
+	}
 }
