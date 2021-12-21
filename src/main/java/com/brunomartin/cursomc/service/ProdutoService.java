@@ -23,4 +23,8 @@ public class ProdutoService {
 		return repository.findAll();
 	}
 	
+	public Produto create(Produto p) {
+		return repository.save(p);
+	}
+	
 }

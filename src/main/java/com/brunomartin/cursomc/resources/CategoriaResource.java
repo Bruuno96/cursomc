@@ -1,7 +1,5 @@
 package com.brunomartin.cursomc.resources;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,10 +33,10 @@ public class CategoriaResource {
 	public ResponseEntity<Categoria> addProduct(){
 		Categoria cat1 = repository.buscar(1);
 		Produto p1 = produtoService.findById(1); 
-		System.out.println(p1.getNome());
 		cat1.getProdutos().add(p1);
 		repository.create(cat1);
-		return ResponseEntity.ok().body(cat1);
+		produtoService.create(p1);
+		return ResponseEntity.ok().build();
 	}
 
 }
