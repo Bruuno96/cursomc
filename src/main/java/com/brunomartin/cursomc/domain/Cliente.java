@@ -7,38 +7,50 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 import com.brunomartin.cursomc.domain.enums.TipoCliente;
 
+@Entity
 public class Cliente implements Serializable{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private String cpfOuCnpj;
 	private String email;
 	private Integer tipo;
 	
+	@OneToMany(mappedBy = "cliente")
 	private List<Endereco> enderecos = new ArrayList<>();
 	
+	@ElementCollection
+	@CollectionTable(name="TELEFONE")
 	private Set<String> telefone = new HashSet<>() ;
 
 	public Cliente() {
 		super();
 	}
 
-	public Cliente(Integer id, String nome, String cpfOuCnpj, String email, TipoCliente tipo, List<Endereco> enderecos,
-			Set<String> telefone) {
+	public Cliente(Integer id, String nome, String cpfOuCnpj, String email, TipoCliente tipo) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.cpfOuCnpj = cpfOuCnpj;
 		this.email = email;
 		this.tipo = tipo.getCode();
-		this.enderecos = enderecos;
-		this.telefone = telefone;
 	}
 
 	public Integer getId() {
