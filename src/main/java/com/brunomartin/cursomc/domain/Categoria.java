@@ -1,6 +1,6 @@
 package com.brunomartin.cursomc.domain;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -11,8 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
@@ -25,8 +23,6 @@ public class Categoria implements Serializable {
 	private Integer id;
 	private String nome;
 	
-	// anotacao onde queremos que venha os objetos associados a ela (JsonManagedReference)
-	@JsonManagedReference
 	@ManyToMany(mappedBy = "categorias", cascade = CascadeType.PERSIST)
 	private List<Produto> produtos = new ArrayList<>();
 		
