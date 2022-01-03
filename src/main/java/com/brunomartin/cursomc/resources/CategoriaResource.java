@@ -4,6 +4,7 @@ import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -46,14 +47,10 @@ public class CategoriaResource {
 		return ResponseEntity.noContent().build();
 	}
 	
-//	@PostMapping("/add")
-//	public ResponseEntity<Categoria> addProduct(){
-//		Categoria cat1 = repository.find(1);
-//		Produto p1 = produtoService.findById(1); 
-//		cat1.getProdutos().add(p1);
-//		repository.create(cat1);
-//		produtoService.create(p1);
-//		return ResponseEntity.ok().build();
-//	}
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> delete(@PathVariable Integer id) {
+		repository.delete(id);		
+		return ResponseEntity.noContent().build();
+	}
 
 }
