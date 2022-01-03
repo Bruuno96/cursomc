@@ -44,6 +44,7 @@ public class PagamentoComBoleto extends Pagamento{
 	}
 
 
+	
 	public Date getDataPagamento() {
 		return dataPagamento;
 	}
