@@ -14,7 +14,6 @@ public class StandardError implements Serializable{
 	
 	
 	public StandardError(Integer status, String msg, Long timeStamp) {
-		super();
 		this.status = status;
 		this.msg = msg;
 		this.timeStamp = timeStamp;
@@ -22,7 +21,6 @@ public class StandardError implements Serializable{
 	
 	
 	public StandardError() {
-		super();
 	}
 
 
