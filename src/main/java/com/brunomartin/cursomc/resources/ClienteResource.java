@@ -1,7 +1,10 @@
 package com.brunomartin.cursomc.resources;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -9,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +22,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.brunomartin.cursomc.domain.Cliente;
 import com.brunomartin.cursomc.dto.ClienteDTO;
+import com.brunomartin.cursomc.dto.ClienteNewDTO;
 import com.brunomartin.cursomc.service.ClienteService;
 
 @RestController
@@ -67,6 +72,14 @@ public class ClienteResource {
 		// Convertendo os elementos da lista de Cliente acima para ClienteDTO. 
 		Page<ClienteDTO> listDto = categoria.map(obj -> new ClienteDTO(obj));
 		return ResponseEntity.ok().body(listDto);
+	}
+	
+	@PostMapping
+	public ResponseEntity<Void> insert(@Valid @RequestBody ClienteNewDTO objDto, UriComponentsBuilder ucb){
+		Cliente obj = repository.fromDTO(objDto);
+		obj = repository.create(obj);
+		URI uri = ucb.path("/categorias/{id}").buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.created(uri).build();
 	}
 	
 }
