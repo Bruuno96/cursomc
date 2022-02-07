@@ -100,7 +100,7 @@ public class DemoApplication implements CommandLineRunner{
 //		Cidade c1 =  new Cidade(null,"Uberlândia", est1);
 //		Cidade c2 = new Cidade(null,"São Paulo", est2);
 //		Cidade c3 = new Cidade(null,"Campinas", est2);
-		
+//		
 //		est1.getCidades().addAll(Arrays.asList(c1));
 //		est2.getCidades().addAll(Arrays.asList(c2,c3));
 //		
@@ -109,7 +109,7 @@ public class DemoApplication implements CommandLineRunner{
 //		
 //		Cliente cli1 = new Cliente(null,"Maria Silva", "3678912377","maria@gmail.com", TipoCliente.PESSOAFISICA);
 //		
-//		cli1.getTelefone().addAll(Arrays.asList("272363323","93838393"));
+//		cli1.getTelefones().addAll(Arrays.asList("272363323","93838393"));
 //		
 //		Endereco e1 = new Endereco(null,"Rua flores","300","Apto 203","Jardim","382208434",cli1,c1);
 //		Endereco e2 = new Endereco(null,"Avenida Matos","105","Sala 800","Centro","382208434",cli1,c2);
