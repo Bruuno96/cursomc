@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -19,7 +20,9 @@ public class ItemPedido implements Serializable{
 	private double desconto;
 	private Integer quantidade;
 	private double preco;
-	
+
+
+
 	public ItemPedido(Pedido pedido ,Produto produto, double desconto, Integer quantidade, double preco) {
 		super();
 		id.setPedido(pedido);
@@ -34,11 +37,25 @@ public class ItemPedido implements Serializable{
 		return id.getPedido();
 	}
 
+	public double getSubTotal(){
+		return (preco - desconto) * quantidade;
+	}
+
 	public Produto getProduto() {
 		return id.getProduto();
 	}
 	public ItemPedido() {
 	}
+
+	public void setPedido(Pedido pedido) {
+		id.setPedido(pedido);
+	}
+
+	public void setProduto(Produto produto) {
+		id.setProduto(produto);
+	}
+
+
 
 	public ItemPedidoPK getId() {
 		return id;

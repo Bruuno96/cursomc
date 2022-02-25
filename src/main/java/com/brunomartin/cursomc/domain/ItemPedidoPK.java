@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Embeddable;
+import javax.persistence.EmbeddedId;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -14,7 +15,7 @@ public class ItemPedidoPK  implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@ManyToOne
 	@JoinColumn(name="pedido_id")
 	private Pedido pedido;
