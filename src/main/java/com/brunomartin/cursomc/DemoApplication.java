@@ -2,6 +2,9 @@ package com.brunomartin.cursomc;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -68,6 +71,41 @@ public class DemoApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 
+//		List<Categoria> categories = categoriaRepository.findAll();
+//
+//		List<Categoria> informática = categories.stream()
+//				.filter(c -> c.getNome().equals("Informática"))
+//				.collect(Collectors.toList());
+//
+//		Optional<Categoria> first = categories.stream().findFirst();
+//
+//		System.out.println(first.get().getNome());
+//
+//		informática.forEach(c -> {
+//			System.out.println(c.getNome());
+//		});
+
+		List<Cliente> clientes = clienteRepository.findAll();
+		List<Cliente> collect = clientes.stream()
+				.filter(c -> c.getEmail().equals("nubia@yahoo.com"))
+				.collect(Collectors.toList());
+
+		// CONSUMER E PREDICATE
+
+
+
+//		for(int a = 0; a < clientes.size(); a++){
+//			if(pessoa.getNascionaliade().equals("Brasil")) {
+//				pessoas.add(pessoa.getIndex(a));
+//			}else{
+//				System.out.println("Email nao cadastrado");
+//			}
+//		}
+
+		if(collect.size() > 0){
+			System.out.println("Email encontrado");
+		}
+
 //		Categoria cat1 = new Categoria(null,"Informática");
 //		Categoria cat2 = new Categoria(null,"Escritório");
 //		Categoria cat3 = new Categoria(null,"Pet");
@@ -76,23 +114,38 @@ public class DemoApplication implements CommandLineRunner{
 //		Categoria cat6 = new Categoria(null,"Jardinagem");
 //		Categoria cat7 = new Categoria(null,"Decoração");
 //		Categoria cat8 = new Categoria(null,"Perfumaria");
-//		
-//		
-//		
+//
+//
+//
 //		Produto p1 = new Produto(null, "Computador", 2000.00);
 //		Produto p2 = new Produto(null, "Impressora", 800.00);
 //		Produto p3 = new Produto(null, "Computador", 80.00);
-//		
+//		Produto p4 = new Produto(null, "Mesa de escritório", 300.00);
+//		Produto p5 = new Produto(null,"Toalha", 50.00);
+//		Produto p6 = new Produto(null, "Colcha", 200.00);
+//		Produto p7 = new Produto(null, "TV true color", 1200.00);
+//		Produto p8 = new Produto(null, "Roçadeira", 800.00);
+//		Produto p9 = new Produto(null, "Abajour", 100.00);
+//		Produto p10 = new Produto(null, "Pendente", 180.00);
+//		Produto p11 = new Produto(null,"Shampoo", 90.00);
+//
 //		cat1.getProdutos().addAll(Arrays.asList(p1,p2));
-//		cat2.getProdutos().addAll(Arrays.asList(p3));
-//		
-//		p1.getCategorias().addAll(Arrays.asList(cat1));
-//		p2.getCategorias().addAll(Arrays.asList(cat1, cat2));
-//		p3.getCategorias().addAll(Arrays.asList(cat1));
-//			
-//		
+//		cat2.getProdutos().addAll(Arrays.asList(p3,p4));
+//
+//		p1.getCategorias().addAll(Arrays.asList(cat1,cat2));
+//		p2.getCategorias().addAll(Arrays.asList(cat1, cat2,cat4));
+//		p3.getCategorias().addAll(Arrays.asList(cat1,cat4));
+//		p4.getCategorias().addAll(Arrays.asList(cat2));
+//		p5.getCategorias().addAll(Arrays.asList(cat3));
+//		p6.getCategorias().addAll(Arrays.asList(cat3));
+//		p7.getCategorias().addAll(Arrays.asList(cat4));
+//		p8.getCategorias().addAll(Arrays.asList(cat5));
+//		p9.getCategorias().addAll(Arrays.asList(cat1,cat6));
+//		p10.getCategorias().addAll(Arrays.asList(cat1,cat6));
+//		p11.getCategorias().addAll(Arrays.asList(cat1,cat7));
+//
 //		categoriaRepository.saveAll(Arrays.asList(cat1,cat2,cat3,cat4,cat5,cat6,cat7));
-//		produtoRepository.saveAll(Arrays.asList(p1,p2,p3));
+//		produtoRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5,p6,p7,p8,p9, p10,p11));
 //		
 //		Estado est1 = new Estado(null,"Minas Gerais");
 //		Estado est2 = new Estado(null, "São Paulo");

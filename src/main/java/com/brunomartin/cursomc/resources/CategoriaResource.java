@@ -62,7 +62,8 @@ public class CategoriaResource {
 		repository.delete(id);		
 		return ResponseEntity.noContent().build();
 	}
-	
+
+
 	@GetMapping
 	public ResponseEntity<List<CategoriaDTO>> findAll() {
 		List<Categoria> categoria = repository.findAll();	
@@ -82,6 +83,7 @@ public class CategoriaResource {
 		Page<Categoria> categoria = repository.findPage(page,linesPerPage, orderBy,direction);	
 		// Convertendo os elementos da lista de Categoria acima para CategoriaDTO. 
 		Page<CategoriaDTO> listDto = categoria.map(obj -> new CategoriaDTO(obj));
+
 		return ResponseEntity.ok().body(listDto);
 	}
 
